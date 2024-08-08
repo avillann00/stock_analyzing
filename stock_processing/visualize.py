@@ -1,7 +1,11 @@
 # import required libraries
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import io
+
+# make the gui window in the back end
+matplotlib.use('Agg')
 
 # plot the data
 def plot_data(df):
@@ -18,15 +22,15 @@ def plot_data(df):
     fig, ax = plt.subplots(1, 2, figsize=(14, 7))
 
     # plot the day change
-    sns.barplot(x='Ticker', y='Percent Day Change', data=head, ax=ax[0])
-    ax[0].set_title('Percent Day Change for Each Ticker')
+    sns.barplot(x='Ticker', y='Day Change', data=head, ax=ax[0])
+    ax[0].set_title('Percent Day Change')
     ax[0].set_ylabel('Percent Day Change')
     ax[0].set_xlabel('Ticker')
     ax[0].tick_params(axis='x', rotation=45)
 
     # plot the month change
-    sns.barplot(x='Ticker', y='Percent Month Change', data=head, ax=ax[1])
-    ax[1].set_title('Percent Month Change for Each Ticker')
+    sns.barplot(x='Ticker', y='Month Change', data=head, ax=ax[1])
+    ax[1].set_title('Percent Month Change')
     ax[1].set_ylabel('Percent Month Change')
     ax[1].set_xlabel('Ticker')
     ax[1].tick_params(axis='x', rotation=45)

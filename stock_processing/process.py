@@ -59,18 +59,23 @@ def process_data():
 
     return processed
 
-# function that separates each stock into a panda by the sector
+# function that separates each stock into a dataframs by the sector
 def by_sector():
     # processed data
     processed = process_data()
-    uniques = processed['GICS Sector'].unique()
+    
+    # get the unique sectors
+    uniques = processed['Sector'].unique()
 
     # list that will hold data frames for each sector
-    sectors = list()
+    sectors = []
 
     # iterate through the sectors and make data frames for each one
     for sector in uniques:
-        temp = processed.loc[processed['GICS Sector'] == sector]
-        sectors.append(temp)
+        try:
+            temp = processed.loc[processed['Sector'] == sector]
+            sectors.append(temp)
+        except Exception as e:
+            print(f'error {e}')
 
-    return sectors
+    return uniques, sectors

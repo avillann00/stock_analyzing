@@ -1,0 +1,18 @@
+{% extends 'stocks/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+    </small>
+</div>
+{% endblock %}
+
